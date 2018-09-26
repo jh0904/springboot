@@ -1,5 +1,6 @@
 package com.jianghao.springboot01helloquick.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,8 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 @ResponseBody*/
 @RestController
 public class HelloController {
+@Value ("${person.last-name}")
+	private String name;
 	@RequestMapping("/zzz")
 	public String hello(){
-		return "zzzzzzzzzzzzzzzzzzzz";
+		return "hello  "+name;
 	}
 }
