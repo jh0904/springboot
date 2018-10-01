@@ -19,6 +19,7 @@ public class Springboot01HelloQuickApplicationTests {
 	@Test
 	public void testHello(){
 		boolean b = ioc.containsBean ("helloService");
+		System.out.println (ioc.getApplicationName ());
 		System.out.println (b);
 	}
 
