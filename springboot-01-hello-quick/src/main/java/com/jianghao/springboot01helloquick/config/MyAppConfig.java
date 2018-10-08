@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author jh
  * @date 2018/9/26 10:43
- * description:@Configuration指明当前类是一个配置类
+ * description:@Configuration指明当前类是一个配置类，用来替代之前的Spring配置文件
  */
 @Configuration
 public class MyAppConfig {
