@@ -4,6 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Arrays;
+import java.util.Map;
+
 /**
  * com.jh.springboot04restfulcrud.controller
  *
@@ -14,10 +17,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 
+/*	@RequestMapping("/")
+	public String index(){
+		return "index";
+	}*/
+
 	@ResponseBody
 	@RequestMapping("/hello")
-	public String hello(){
+	public String hello() {
 		return "hello";
 	}
+
+	//查出数据在页面显示
+	@RequestMapping("/success")
+	public String success(Map<String, Object> map) {
+		map.put ("hello", "<h2>你好</h2>");
+		map.put ("users", Arrays.asList ("aa","bb","cc"));
+		return "success";
+	}
+
 
 }
