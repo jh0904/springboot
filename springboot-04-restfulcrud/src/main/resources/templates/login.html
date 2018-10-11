@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Signin Template for Bootstrap</title>
+    <title>登陆页面</title>
     <!-- Bootstrap core CSS -->
     <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -14,14 +14,16 @@
 </head>
 
 <body class="text-center">
-<form class="form-signin" action="dashboard.html">
+<form class="form-signin" action="dashboard.html" th:action="@{/user/login}" method="post">
     <img class="mb-4" th:src="@{/asserts/img/bootstrap-solid.svg}" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
+    <!--条件判断-->
+    <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
     <label class="sr-only" th:text="#{login.username}">Username</label>
-    <input type="text" class="form-control" placeholder="Username" required="" autofocus=""
+    <input type="text" name="username" class="form-control" placeholder="Username" required="" autofocus=""
            th:placeholder="#{login.username}">
     <label class="sr-only" th:text="#{login.password}">Password</label>
-    <input type="password" class="form-control" placeholder="Password" required="" th:placeholder="#{login.password}">
+    <input name="password" type="password" class="form-control" placeholder="Password" required="" th:placeholder="#{login.password}">
     <div class="checkbox mb-3">
         <label>
             <input type="checkbox" value="remember-me"> [[#{login.remember}]]
