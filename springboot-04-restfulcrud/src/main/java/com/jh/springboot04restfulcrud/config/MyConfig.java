@@ -1,9 +1,11 @@
 package com.jh.springboot04restfulcrud.config;
 
+import com.jh.springboot04restfulcrud.component.LoginHandlerInterceptor;
 import com.jh.springboot04restfulcrud.component.MyLocaleResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -28,16 +30,28 @@ public class MyConfig extends WebMvcConfigurerAdapter {
 			@Override
 			public void addViewControllers(ViewControllerRegistry registry) {
 				registry.addViewController ("/").setViewName ("login");
-				registry.addViewController ("/login.html").setViewName ("login");
-
+				registry.addViewController ("/index.html").setViewName ("login");
+				registry.addViewController ("/main.html").setViewName ("dashboard");
 			}
 		};
 		return adapter;
 	}
 
-	@Bean
-	public LocaleResolver localeResolver(){
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		//注册拦截器
+		//静态资源(js/css)--------->springboot已经做好静态资源映射
 
-		return new MyLocaleResolver();
+		//registry.addInterceptor (new LoginHandlerInterceptor ()).addPathPatterns ("/**")
+		//		.excludePathPatterns ("/index.html", "/", "user/login");
+
+		registry.addInterceptor (new LoginHandlerInterceptor ()).addPathPatterns ("/**")
+				.excludePathPatterns ("/index.html", "/", "/user/login");
+	}
+
+	@Bean
+	public LocaleResolver localeResolver() {
+
+		return new MyLocaleResolver ();
 	}
 }
