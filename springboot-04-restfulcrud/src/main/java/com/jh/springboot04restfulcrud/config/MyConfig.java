@@ -42,11 +42,11 @@ public class MyConfig extends WebMvcConfigurerAdapter {
 		//注册拦截器
 		//静态资源(js/css)--------->springboot已经做好静态资源映射
 
-		//registry.addInterceptor (new LoginHandlerInterceptor ()).addPathPatterns ("/**")
-		//		.excludePathPatterns ("/index.html", "/", "user/login");
-
 		registry.addInterceptor (new LoginHandlerInterceptor ()).addPathPatterns ("/**")
 				.excludePathPatterns ("/index.html", "/", "/user/login");
+
+		/*registry.addInterceptor (new LoginHandlerInterceptor ()).addPathPatterns ("/**")
+				.excludePathPatterns ("/index.html", "/", "/user/login");*/
 	}
 
 	@Bean
