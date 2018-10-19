@@ -1,6 +1,8 @@
 package com.jh.springboot04restfulcrud.controller;
 
+import com.jh.springboot04restfulcrud.dao.DepartmentDao;
 import com.jh.springboot04restfulcrud.dao.EmployeeDao;
+import com.jh.springboot04restfulcrud.entities.Department;
 import com.jh.springboot04restfulcrud.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,9 @@ import java.util.Collection;
 @Controller
 public class EmployeeController {
 	@Autowired
+	DepartmentDao departmentDao;
+
+	@Autowired
 	EmployeeDao employee;
 
 	//查询所有员工
@@ -32,5 +37,12 @@ public class EmployeeController {
 		// classpath:/templates/xxxx.html
 		return "emp/list";
 	}
-	//
+	//来到员工添加页面
+	@GetMapping("/emp")
+	public String toAddPage(Model model){
+		//首先要查出部门，然后在页面显示
+		Collection<Department> departments = departmentDao.getDepartments ();
+		model.addAttribute ("depts",departments);
+		return "emp/add";
+	}
 }
