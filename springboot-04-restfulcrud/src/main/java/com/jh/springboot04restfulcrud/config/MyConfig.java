@@ -1,6 +1,5 @@
 package com.jh.springboot04restfulcrud.config;
 
-import com.jh.springboot04restfulcrud.component.LoginHandlerInterceptor;
 import com.jh.springboot04restfulcrud.component.MyLocaleResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -42,11 +41,8 @@ public class MyConfig extends WebMvcConfigurerAdapter {
 		//注册拦截器
 		//静态资源(js/css)--------->springboot已经做好静态资源映射
 
-		registry.addInterceptor (new LoginHandlerInterceptor ()).addPathPatterns ("/**")
-				.excludePathPatterns ("/index.html", "/", "/user/login");
-
-		/*registry.addInterceptor (new LoginHandlerInterceptor ()).addPathPatterns ("/**")
-				.excludePathPatterns ("/index.html", "/", "/user/login");*/
+		//registry.addInterceptor (new LoginHandlerInterceptor ()).addPathPatterns ("/**")
+		//		.excludePathPatterns ("/index.html", "/", "/user/login");
 	}
 
 	@Bean
