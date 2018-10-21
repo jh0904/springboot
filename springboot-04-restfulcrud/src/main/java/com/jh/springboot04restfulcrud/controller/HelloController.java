@@ -1,8 +1,10 @@
 package com.jh.springboot04restfulcrud.controller;
 
-import org.springframework.stereotype.Controller;
+import com.jh.springboot04restfulcrud.exception.UserNotExistException;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -14,7 +16,7 @@ import java.util.Map;
  * @date 2018/10/10 14:47
  * description:
  */
-@Controller
+@RestController
 public class HelloController {
 
 /*	@RequestMapping("/")
@@ -23,8 +25,11 @@ public class HelloController {
 	}*/
 
 	@ResponseBody
-	@RequestMapping("/hello")
-	public String hello() {
+	@RequestMapping("hello")
+	public String hello(@RequestParam("user") String user) {
+		if(user.equals ("aaa")){
+			throw new UserNotExistException ();
+		}
 		return "hello";
 	}
 
