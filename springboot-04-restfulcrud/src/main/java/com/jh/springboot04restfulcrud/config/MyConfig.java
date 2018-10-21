@@ -1,6 +1,8 @@
 package com.jh.springboot04restfulcrud.config;
 
 import com.jh.springboot04restfulcrud.component.MyLocaleResolver;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -17,6 +19,19 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Configuration
 public class MyConfig extends WebMvcConfigurerAdapter {
+
+	@Bean
+	public EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer(){
+		return new EmbeddedServletContainerCustomizer () {
+			//定制嵌入式的servlet容器
+			@Override
+			public void customize(ConfigurableEmbeddedServletContainer container) {
+				container.setPort (8080);
+			}
+		};
+	}
+
+
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController ("/jh").setViewName ("success");
