@@ -4,3 +4,4 @@ spring:
     password: root
     url: jdbc:mysql://119.23.10.198:3306/jdbc
     driver-class-name: com.mysql.jdbc.Driver
+#    schema: deaprtment.sql  使用配置文件修改配置
