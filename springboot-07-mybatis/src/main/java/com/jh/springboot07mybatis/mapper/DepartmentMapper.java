@@ -4,7 +4,7 @@ import com.jh.springboot07mybatis.Bean.Department;
 import org.apache.ibatis.annotations.*;
 
 /**
- * com.jh.springboot07mybatis.mapper
+ * com.jh.springboot07mybatis.mybatis
  *
  * @author jh
  * @date 2018/11/5 11:04

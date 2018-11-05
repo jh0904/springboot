@@ -29,3 +29,6 @@ spring:
 #      - classpath:sql/employee.sql
 
 #    schema: deaprtment.sql  使用配置文件修改配置
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml

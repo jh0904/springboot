@@ -1,12 +1,13 @@
 package com.jh.springboot07mybatis.controller;
 
 import com.jh.springboot07mybatis.Bean.Department;
+import com.jh.springboot07mybatis.Bean.Employee;
 import com.jh.springboot07mybatis.mapper.DepartmentMapper;
+import com.jh.springboot07mybatis.mapper.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * com.jh.springboot07mybatis.controller
@@ -15,22 +16,29 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @date 2018/11/5 11:11
  * description:
  */
-@Controller
+@RestController
 public class DeptController {
 
 	@Autowired
 	DepartmentMapper mapper;
 
+	@Autowired
+	EmployeeMapper employeeMapper;
+
 	@GetMapping("/dept/{id}")
-	@ResponseBody
-	public Department getDepartment(@PathVariable("id") Integer id){
+	public Department getDepartment(@PathVariable("id") Integer id) {
 		return mapper.getDeptById (id);
 	}
 
 	@GetMapping("/dept")
-	@ResponseBody
-	public Department insertDept(Department department){
+	public Department insertDept(Department department) {
 		mapper.insertDept (department);
 		return department;
 	}
+
+	@GetMapping("/emp/{id}")
+	public Employee getEmp(@PathVariable("id") Integer id) {
+		return employeeMapper.getEmpById (id);
+	}
+
 }
